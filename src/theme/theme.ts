@@ -9,6 +9,11 @@ const customTheme = createMuiTheme({
         secondary: {
             main: "#EFEFEF",
         }
+    },
+    typography: {
+        h3: {
+            color: "white"
+        }
     }
 })
 
