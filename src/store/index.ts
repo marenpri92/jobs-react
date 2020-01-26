@@ -3,8 +3,10 @@ import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
 import { routerMiddleware, connectRouter } from 'connected-react-router';
 
 import history from './utils/history';
+import job from '../modules/job/jobs.reducer';
 
 const reducers = combineReducers({
+    job,
     router: connectRouter(history)
 });
 
