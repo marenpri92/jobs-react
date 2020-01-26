@@ -1,7 +1,8 @@
 import { ThunkAction } from 'redux-thunk';
 import { Action } from 'redux';
+import { push } from 'connected-react-router';
 
-import { LOADING, JOBS_SUCCESS, DETAILS_SUCCESS, FAIL } from './types';
+import { LOADING, JOBS_SUCCESS, DETAILS_SUCCESS, FAIL, DELETE } from './types';
 import Job from '../../core/models/job';
 import { list } from '../../core/data/job.data';
 import { AppState } from '../../store';
@@ -21,6 +22,11 @@ const detailsSuccess = (job: Job) => ({
 const fail = (error: string) => ({
     type: FAIL,
     payload: error
+})
+
+const jobRemove = (job: Job) => ({
+    type: DELETE,
+    payload: job
 })
 
 export const jobsShuffle = ():
@@ -45,4 +51,10 @@ export const jobsList = ():
 export const jobSelected = (job: Job):
     ThunkAction<void, AppState, null, Action<string>> => dispatch => {
         dispatch(detailsSuccess(job))
+    }
+
+export const jobDelete = (job: Job):
+    ThunkAction<void, AppState, null, Action<string>> => dispatch => {
+        dispatch(jobRemove(job));
+        dispatch(push("/job"))
     }

@@ -15,6 +15,7 @@ export const LOADING = 'LOADING';
 export const JOBS_SUCCESS = 'JOBS_SUCCESS';
 export const DETAILS_SUCCESS = 'DETAILS_SUCCESS';
 export const FAIL = 'FAIL';
+export const DELETE = 'DELETE';
 
 interface Loading {
     type: typeof LOADING
@@ -35,4 +36,9 @@ interface Fail {
     payload: string
 }
 
-export type JobActionTypes = Loading | JobsSuccess | DetailsSuccess | Fail;
+interface Delete {
+    type: typeof DELETE,
+    payload: Job
+}
+
+export type JobActionTypes = Loading | JobsSuccess | DetailsSuccess | Fail | Delete;

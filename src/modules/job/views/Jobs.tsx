@@ -5,8 +5,8 @@ import Button from '@material-ui/core/Button';
 import { AppState } from '../../../store';
 import { jobsList, jobsShuffle, jobSelected } from '../jobs.actions';
 import Job from '../../../core/models/job';
-import HeaderActions from '../../shared/HeaderActions';
-import Loading from '../../shared/Loading';
+import HeaderActions from '../../shared/headerActions/HeaderActions';
+import Loading from '../../shared/loading/Loading';
 import JobsList from '../components/jobsList/JobsList';
 
 interface Props {

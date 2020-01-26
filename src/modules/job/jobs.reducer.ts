@@ -1,4 +1,4 @@
-import { JobState, JobActionTypes, LOADING, JOBS_SUCCESS, DETAILS_SUCCESS, FAIL } from "./types";
+import { JobState, JobActionTypes, LOADING, JOBS_SUCCESS, DETAILS_SUCCESS, FAIL, DELETE } from "./types";
 import Job from "../../core/models/job";
 
 const jobStateInitial: JobState = {
@@ -34,6 +34,12 @@ const job = (state = jobStateInitial, action: JobActionTypes) => {
                 ...state,
                 loading: false,
                 error: action.payload
+            };
+        case DELETE:
+            return {
+                ...state,
+                loading: false,
+                list: state.list.filter(job => job.id !== action.payload.id)
             };
         default: return state
     }
