@@ -23,14 +23,22 @@ const fail = (error: string) => ({
     payload: error
 })
 
-export const jobsList = ():
-    ThunkAction<void, AppState, null, Action<string>> => async (dispatch, getState) => {
+export const jobsShuffle = ():
+    ThunkAction<void, AppState, null, Action<string>> => async dispatch => {
         try {
             dispatch(loading());
             const resp = await list();
             dispatch(jobsSuccess(resp));
         } catch (error) {
             dispatch(fail(error));
+        }
+    }
+
+export const jobsList = ():
+    ThunkAction<void, AppState, null, Action<string>> => async (dispatch, getState) => {
+        const state = getState();
+        if (state.job.firstLoading) {
+            dispatch(jobsShuffle())
         }
     }
 

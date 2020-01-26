@@ -1,28 +1,38 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import Button from '@material-ui/core/Button';
+
 import { AppState } from '../../../store';
-import { jobsList } from '../jobs.actions';
+import { jobsList, jobsShuffle, jobSelected } from '../jobs.actions';
 import Job from '../../../core/models/job';
+import HeaderActions from '../../shared/HeaderActions';
+import Loading from '../../shared/Loading';
+import JobsList from '../components/jobsList/JobsList';
 
-interface StateProps {
+interface Props {
     loading: boolean,
-    list: Job[]
+    list: Job[],
+    job: Job,
+    getList: () => void,
+    shuffle: () => void,
+    select: (job: Job) => void,
 }
-
-interface DispatchProps {
-    getList: () => void
-}
-
-type Props = StateProps & DispatchProps
 
 class Jobs extends React.Component<Props> {
 
     componentDidMount = () => this.props.getList();
 
+    actions = () => (<Button variant="contained" color="primary" onClick={() => this.props.shuffle()} >shuffle</Button>)
+
+    listRender = () => this.props.loading ? <Loading /> : <JobsList list={this.props.list} select={this.props.select} />
+
     render() {
         console.log("list", this.props.list)
         return (
-            <React.Fragment>Hello from Jobs component</React.Fragment>
+            <React.Fragment>
+                <HeaderActions title="Jobs list">{this.actions()}</HeaderActions>
+                {this.listRender()}
+            </React.Fragment>
         )
     }
 }
@@ -30,10 +40,13 @@ class Jobs extends React.Component<Props> {
 const mapDispatchToProps = (state: AppState) => ({
     loading: state.job.loading,
     list: state.job.list,
+    job: state.job.details
 });
 
 const actionCreators = {
-    getList: jobsList
+    getList: jobsList,
+    shuffle: jobsShuffle,
+    select: jobSelected
 }
 
 const JobsContainer = connect(mapDispatchToProps, actionCreators)(Jobs);
