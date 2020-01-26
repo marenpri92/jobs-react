@@ -48,8 +48,8 @@ class JobDetails extends React.Component<Props> {
                         <Typography variant="subtitle1" color="textSecondary" gutterBottom>{job.city}</Typography>
                     </Grid>
                     <Grid container>
-                        <Grid item xs={12} lg={4}><JobBoxDetails job={job} /></Grid>
-                        <Grid item xs={12} lg={8}><JobBoxDescription description={job.description} /></Grid>
+                        <Grid item xs={12}><JobBoxDetails job={job} /></Grid>
+                        <Grid item xs={12}><JobBoxDescription description={job.description} /></Grid>
                     </Grid>
                 </React.Fragment>}
             </React.Fragment>

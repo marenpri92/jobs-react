@@ -17,28 +17,26 @@ type Props = {
 
 const JobBoxDetails: React.FC<Props> = ({ job }) => {
     const classes = useStyles();
-    const theme = useTheme();
-    const tablet = useMediaQuery(theme.breakpoints.down('md'));
 
     return (
-        <Grid container direction={tablet ? "row" : "column"} justify="space-between"
+        <Grid container justify="space-between"
             className={classes.root}>
-            <Grid item xs={2} md={2} lg={12}>
-                <Box textAlign={tablet ? "left" : "right"}>
+            <Grid item xs={1}>
+                <Box>
                     <Badge badgeContent={job.counter.messages_unread} color="primary">
                         <MailIcon />
                     </Badge></Box>
 
             </Grid>
-            <Grid item xs={2} md={2} lg={12}>
+            <Grid item>
                 <Typography variant="body1">State</Typography>
                 <Typography variant="body2" color="textSecondary" gutterBottom>{job.state}</Typography>
             </Grid>
-            <Grid item xs={4} md={4} lg={12}>
+            <Grid item>
                 <Typography variant="body1">Publicated</Typography>
                 <Typography variant="body2" color="textSecondary" gutterBottom>{dateFormatter(job.created_at)}</Typography>
             </Grid>
-            <Grid item xs={3} md={4} lg={12}>
+            <Grid item>
                 <Typography variant="body1">Expire</Typography>
                 <Typography variant="body2" color="textSecondary" gutterBottom>{dateFormatter(job.end_date)}</Typography>
             </Grid>
