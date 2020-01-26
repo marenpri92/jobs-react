@@ -11,7 +11,7 @@ import { AppState } from '../../../store';
 import { jobsList, jobDelete } from '../jobs.actions';
 import JobLogo from '../../shared/jobLogo/JobLogo';
 import JobBoxDetails from '../components/jobBoxDetails/JobBoxDetails';
-import JobBoxDescription from '../components/jobBoxDescription/jobBoxDescription';
+import JobBoxDescription from '../components/jobBoxDescription/JobBoxDescription';
 
 interface StateProps {
     job: Job,
@@ -43,7 +43,7 @@ class JobDetails extends React.Component<Props> {
                 {!firstLoading && <React.Fragment>
                     <HeaderActions title="Job details"> {this.actions()} </HeaderActions>
                     <Grid container justify="center" alignContent="center" alignItems="center" direction="column">
-                        <JobLogo url={job.thumbnail} active={""} />
+                        <JobLogo url={job.thumbnail} isSmall={false} />
                         <Typography variant="h6" align="center">{job.title}</Typography>
                         <Typography variant="subtitle1" color="textSecondary" gutterBottom>{job.city}</Typography>
                     </Grid>
