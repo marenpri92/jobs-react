@@ -9,7 +9,7 @@ import HeaderActions from '../../shared/headerActions/HeaderActions';
 import Loading from '../../shared/loading/Loading';
 import JobsList from '../components/jobsList/JobsList';
 
-interface Props {
+type Props = {
     loading: boolean,
     list: Job[],
     job: Job,

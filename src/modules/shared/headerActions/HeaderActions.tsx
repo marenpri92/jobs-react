@@ -1,8 +1,11 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import useStyles from '../shared.style';
-import { HeaderActions as IHeaderActions } from '../types';
+import useStyles from './headerActions.style';
+
+type IHeaderActions = {
+    title: string
+}
 
 const HeaderActions: React.FC<IHeaderActions> = ({ children, title }) => {
     const classes = useStyles();

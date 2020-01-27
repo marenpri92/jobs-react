@@ -11,7 +11,6 @@ type Props = {
     handlerNavigate: () => void
 }
 
-
 const JobItem: React.FC<Props> = ({ job, handlerNavigate }) => (
     <React.Fragment>
         {

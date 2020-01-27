@@ -6,7 +6,6 @@ const useStyles = makeStyles(({ spacing, palette }: Theme) => createStyles({
         margin: spacing(1, 0),
         border: "solid 1px",
         borderColor: palette.secondary.main,
-        // height: "100%"
     }
 }));
 

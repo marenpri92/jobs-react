@@ -9,7 +9,7 @@ import StyledTableCell from './jobsList.style';
 import Job from '../../../../core/models/job';
 import JobItem from '../jobItem/JobItem';
 
-type JobProps = {
+interface JobProps {
     list: Job[],
     select: (job: Job) => void
 }
@@ -39,7 +39,7 @@ const JobsList: React.FC<Props> = ({ list, select, history }) => {
             <TableBody>
                 {
                     list.map((row: Job) => (
-                        <JobItem key={row.id} row={row} handlerNavigate={() => handlerNavigate(row)} />
+                        <JobItem key={row.id} job={row} handlerNavigate={() => handlerNavigate(row)} />
                     ))
                 }
             </TableBody>
