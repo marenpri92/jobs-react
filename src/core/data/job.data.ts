@@ -12,6 +12,6 @@ export const list = async () => {
         return json;
 
     } catch (error) {
-        return error;
+        throw error;
     }
 }

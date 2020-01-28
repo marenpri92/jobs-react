@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
 
 import { AppState } from '../../../store';
 import { jobsList, jobsShuffle, jobSelected } from '../jobs.actions';
@@ -13,6 +14,7 @@ type Props = {
     loading: boolean,
     list: Job[],
     job: Job,
+    error: string,
     getList: () => void,
     shuffle: () => void,
     select: (job: Job) => void,
@@ -24,7 +26,9 @@ class Jobs extends React.Component<Props> {
 
     actions = () => (<Button variant="contained" color="primary" onClick={() => this.props.shuffle()} >shuffle</Button>)
 
-    listRender = () => this.props.loading ? <Loading /> : <JobsList list={this.props.list} select={this.props.select} />
+    listRender = () => this.props.loading ? <Loading /> : this.props.error ?
+        <Typography>No data to display</Typography> :
+        <JobsList list={this.props.list} select={this.props.select} />
 
     render() {
         console.log("list", this.props.list)
@@ -40,7 +44,8 @@ class Jobs extends React.Component<Props> {
 const mapDispatchToProps = (state: AppState) => ({
     loading: state.job.loading,
     list: state.job.list,
-    job: state.job.details
+    job: state.job.details,
+    error: state.job.error
 });
 
 const actionCreators = {
